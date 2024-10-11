@@ -1,18 +1,14 @@
 // Function to check if the selected answer is correct
 function checkAnswer() {
-  // Correct answer
   const correctAnswer = "4";
+    const userAnswer = document.getElementsByName("quiz");
   
-  // Get all radio buttons with the name 'quiz'
-  const choices = document.getElementsByName("quiz");
-  
-  // Variable to store the user's selected answer
   let selectedAnswer = null;
   
   // Loop through choices to find which one is checked
-  for (let i = 0; i < choices.length; i++) {
-      if (choices[i].checked) {
-          selectedAnswer = choices[i].value;
+  for (let i = 0; i < userAnswer.length; i++) {
+      if (userAnswer[i].checked) {
+          selectedAnswer = userAnswer[i].value;
           break;
       }
   }
