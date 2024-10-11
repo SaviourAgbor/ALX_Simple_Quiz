@@ -1,35 +1,22 @@
-// Function to check if the selected answer is correct
 function checkAnswer() {
-  // Retrieve the correct answer from the data attribute of the question element
-  const quizContainer = document.getElementById("quiz-question");
-  const correctAnswer = quizContainer.getAttribute("data-correct-answer");
+  const correctAnswer = "4";
 
-  // Use document.querySelector to get the user's selected answer (radio input that is checked)
-  const userAnswer = document.querySelector('input[name="quiz"]:checked');
+  const ischecked = document.querySelector('input[name="quiz"]:checked');
 
-  // Get the feedback element
-  const feedback = document.getElementById("feedback");
+  if (ischecked) {
+    const userAnswer = ischecked.value;
 
-  // Check if an answer was selected
-  if (userAnswer) {
-    // Use a comparison function to evaluate the answers
-    if (isCorrectAnswer(userAnswer.value, correctAnswer)) {
-      feedback.textContent = "Correct! Well done.";
-      feedback.style.color = "green"; // Change text color to green for correct answer
+    if (userAnswer === correctAnswer) {
+      document.getElementById("feedback").textContent = "Correct! Well done.";
     } else {
-      feedback.textContent = "Incorrect. Try again.";
-      feedback.style.color = "red"; // Change text color to red for incorrect answer
+      document.getElementById("feedback").textContent =
+        "That's incorrect. Try again!";
     }
   } else {
-    feedback.textContent = "Please select an answer.";
-    feedback.style.color = "orange"; // Warn the user to select an answer
+    document.getElementById("feedback").textContent =
+      "Please select an answer.";
   }
 }
 
-// Comparison function to check if the user's answer matches the correct answer
-function isCorrectAnswer(userAnswerValue, correctAnswerValue) {
-  return userAnswerValue === correctAnswerValue;
-}
-
-// Add event listener to the "Submit Answer" button
-document.getElementById("submit-answer").addEventListener("click", checkAnswer);
+const submit = document.getElementById("submit-answer");
+submit.addEventListener("click", checkAnswer);
